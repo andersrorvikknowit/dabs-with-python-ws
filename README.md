@@ -60,3 +60,30 @@ Then we can deploy the bundle with the databricks-cli
 ```shell
 databricks bundle deploy --target dev -p <your_profile_name>
 ```
+
+You will get an error like:
+
+```shell
+databricks bundle deploy --target dev -p knowit_python_ws
+Building default...
+Uploading dist/jobs_as_code_project-0.0.1+20251022.201815-py3-none-any.whl...
+Uploading bundle files to /Workspace/Users/anders.rorvik@knowit.no/.bundle/jobs_as_code_project/dev/files...
+Deploying resources...
+Error: terraform apply: exit status 1
+
+Error: cannot create pipeline: Catalog 'default_catalog' does not exist.
+
+  with databricks_pipeline.jobs_as_code_project_pipeline,
+  on bundle.tf.json line 89, in resource.databricks_pipeline.jobs_as_code_project_pipeline:
+  89:       }
+```
+
+This is because that catalog does not exist yet. We will use the catalog "knowit_dabs_python_ws" instead.
+Find the relevant file, and update the catalog name.
+
+<details>
+  <summary>Show hint</summary>
+Have a look at the file jobs_as_code_project_pipeline.py
+</details>
+
+
