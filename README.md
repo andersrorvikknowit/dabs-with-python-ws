@@ -87,3 +87,27 @@ Have a look at the file jobs_as_code_project_pipeline.py
 </details>
 
 
+## Exercise 4
+Observe where the bundle has been deployed in [your workspace](https://dbc-639f4875-165d.cloud.databricks.com/browse)
+
+## Exercise 5
+
+So now we have used the default bundle setup. I think we can do better, and we need more python too!
+
+Here are some things we could do:
+* We do not want a pyproject.toml for each bundle
+* We do not want to repeat targets / environments in each bundle
+* The job and pipeline were created with JSON definitions, but it can actually be done with python instead! See the files called "jobs_as_code_project_job.py" and "jobs_as_code_project_pipeline.py" for examples of json definitions.
+* And we still have YAML? Unfortunately, we cannot get rid of it all, but we can get rid of most of it.
+
+So what can we do? We can reuse definitions and share them across bundles.
+
+Navigate to the root of your repository.
+
+
+
+
+
+
+
+
