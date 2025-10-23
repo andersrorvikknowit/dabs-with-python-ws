@@ -15,37 +15,6 @@ from databricks.bundles.jobs import (
 
 from .common_mutator_functions import Variables, clean_branch
 
-
-@job_mutator
-def add_email_notifications(bundle: Bundle, job: Job) -> Job:
-    """If production mode, add email notification from variables."""
-    if job.email_notifications:
-        return job
-
-    if bundle.target == "prod":
-        email = bundle.resolve_variable(Variables.notification_email)
-        email_notifications = JobEmailNotifications.from_dict(
-            {
-                "on_failure": [email],
-            }
-        )
-        job = replace(job, email_notifications=email_notifications)
-
-    return job
-
-
-@job_mutator
-def add_job_name_parameter(_: Bundle, job: Job) -> Job:
-    current_params = job.parameters
-    if current_job_name_param := next(
-        (param for param in current_params if param.name == "job_name"), None
-    ):
-        msg = f"Job {job.name} already has a job_name parameter defined: {current_job_name_param.default}."
-        raise ValueError(msg)
-    job.parameters.append(JobParameterDefinition(name="job_name", default=job.name))
-    return job
-
-
 @job_mutator
 def adjust_job_for_dev(bundle: Bundle, job: Job) -> Job:  # noqa: C901
     if bundle.target == "prod":
