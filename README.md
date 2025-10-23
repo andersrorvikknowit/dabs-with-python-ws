@@ -216,4 +216,10 @@ jobs_as_code_project_pipeline = Pipeline(
 
 Deploy this as well with the databricks bundle deploy command.
 Notice that you are using the same catalog, schema, as other users. This is not going to work in real scenario.
+We will fix this later on in the workshop, nevermind if your pipeline fails.
 
+## Exercise 6
+In order to save time, we will fast track to a more elegant and efficient solution to working with bundles.
+
+* Switch to the branch anders_made_bundles_for_you!
+* Observe 
