@@ -253,5 +253,6 @@ make deploy BUNDLE=bundle1 PROFILE=<your_profile_name>
 ```
 
 If everything was done correctly, you should have a working deploy.
+Run the pipeline in the databricks GUI. Observe the results
 
 
