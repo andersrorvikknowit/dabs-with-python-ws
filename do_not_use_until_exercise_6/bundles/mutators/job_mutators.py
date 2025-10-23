@@ -1,5 +1,4 @@
 # type: ignore[reportAttributeAccessIssue] known issue due to type structure of databricks variable classes
-from dataclasses import replace
 
 from databricks.bundles.core import (
     Bundle,
@@ -7,8 +6,6 @@ from databricks.bundles.core import (
 )
 from databricks.bundles.jobs import (
     Job,
-    JobEmailNotifications,
-    JobParameterDefinition,
     PauseStatus,
     PerformanceTarget,
 )
