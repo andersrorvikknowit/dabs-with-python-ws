@@ -1,7 +1,7 @@
-# This is a Databricks asset bundle definition for bundle1.
+# This is a Databricks asset bundle definition for bundle2.
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
-  name: bundle1
+  name: bundle2
 
 include:
   - ../variables.yml
