@@ -78,8 +78,8 @@ Error: cannot create pipeline: Catalog 'default_catalog' does not exist.
   89:       }
 ```
 
-This is because that catalog does not exist yet. We will use the catalog "knowit_dabs_python_ws" instead.
-Find the relevant file, and update the catalog name.
+This is because that catalog does not exist. We will use the catalog "knowit_dabs_python_ws" which has been created already, instead.
+Find the relevant file, and update the catalog name variable.
 
 <details>
   <summary>Show hint</summary>
@@ -95,19 +95,125 @@ Observe where the bundle has been deployed in [your workspace](https://dbc-639f4
 So now we have used the default bundle setup. I think we can do better, and we need more python too!
 
 Here are some things we could do:
-* We do not want a pyproject.toml for each bundle
+* We do not want a .venv / pyproject.toml for each bundle
 * We do not want to repeat targets / environments in each bundle
 * The job and pipeline were created with JSON definitions, but it can actually be done with python instead! See the files called "jobs_as_code_project_job.py" and "jobs_as_code_project_pipeline.py" for examples of json definitions.
 * And we still have YAML? Unfortunately, we cannot get rid of it all, but we can get rid of most of it.
 
-So what can we do? We can reuse definitions and share them across bundles.
+So what can we do? We can reuse definitions and share them across bundles, but first we will "pythonify" our deployments.
 
-Navigate to the root of your repository.
+In case you used the default template:
 
+* Edit the file called jobs_as_code_project_job.py
 
+We will now convert it from JSON to Python. See a sample below. Note that implementations on Azure and GCP will have different attributes.
+Waiting for the job cluster and the job to complete is going to take about 11 minutes. Please use the serverless version below, unless you need a coffee break :)
 
+```python
 
+from databricks.bundles.jobs import (
+    AutoScale,
+    ClusterSpec,
+    CronSchedule,
+    DataSecurityMode,
+    JobCluster,
+    Job,
+    PerformanceTarget,
+    Task,
+    NotebookTask,
+    AwsAttributes,
+    EbsVolumeType,
+)
 
+job = Job(
+    name="jobs_as_code_project_job",
+    performance_target=PerformanceTarget.PERFORMANCE_OPTIMIZED,
+    schedule=CronSchedule(
+        quartz_cron_expression="0 0 8 ? * * *",
+        timezone_id="UTC",  # Every day at 8 clock in the morning.
+    ),
+    job_clusters=[
+        JobCluster(
+            job_cluster_key="my_awesome_job_cluster",
+            new_cluster=ClusterSpec(
+                spark_version="15.4.x-scala2.12",
+                node_type_id="m5a.large",
+                data_security_mode=DataSecurityMode.USER_ISOLATION,
+                autoscale=AutoScale(min_workers=1, max_workers=4),
+                aws_attributes=AwsAttributes(
+                    ebs_volume_count=1,
+                    ebs_volume_size=32,
+                    ebs_volume_type=EbsVolumeType.GENERAL_PURPOSE_SSD,
+                ),
+            ),
+        )
+    ],
+    tasks=[
+        Task(
+            task_key="notebook_task",
+            notebook_task=NotebookTask(notebook_path="src/notebook.ipynb"),
+            job_cluster_key="my_awesome_job_cluster",
+        )
+    ],
+)
 
+```
 
+```python
+from databricks.bundles.jobs import (
+    CronSchedule,
+    Job,
+    PerformanceTarget,
+    Task,
+    NotebookTask,
+)
+
+job = Job(
+    name="jobs_as_code_project_job",
+    performance_target=PerformanceTarget.PERFORMANCE_OPTIMIZED,
+    schedule=CronSchedule(
+        quartz_cron_expression="0 0 8 ? * * *",
+        timezone_id="UTC",  # Every day at 8 clock in the morning.
+    ),
+    tasks=[
+        Task(
+            task_key="notebook_task",
+            notebook_task=NotebookTask(notebook_path="src/notebook.ipynb"),
+        )
+    ],
+)
+
+```
+
+Run the deploy with the databricks CLI
+
+```shell
+databricks bundle deploy --target dev -p <your_profile_name>
+```
+
+Time to change the Pipeline / Delta Live Table / Spark Declarative Pipeline into python code as well. A loved child has many names
+* Edit the file jobs_as_code_project_pipeline.py
+
+```python
+
+from databricks.bundles.pipelines import NotebookLibrary, Pipeline, PipelineLibrary
+
+jobs_as_code_project_pipeline = Pipeline(
+    name="jobs_as_code_project_pipeline",
+    catalog="knowit_dabs_python_ws",
+    schema="knowit_dabs_python_ws_${bundle.target}",
+    libraries=[
+        PipelineLibrary(
+            notebook=NotebookLibrary(path="src/dlt_pipeline.ipynb"),
+        )
+    ],
+    configuration={
+        "bundle.sourcePath": "${workspace.file_path}/src",
+    },
+)
+
+```
+
+Deploy this as well with the databricks bundle deploy command.
+Notice that you are using the same catalog, schema, as other users. This is not going to work in real scenario.
 
