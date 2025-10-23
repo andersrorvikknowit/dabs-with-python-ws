@@ -191,7 +191,7 @@ Run the deploy with the databricks CLI
 databricks bundle deploy --target dev -p <your_profile_name>
 ```
 
-Time to change the Pipeline / Delta Live Table / Spark Declarative Pipeline into python code as well. A loved child has many names
+Time to change the Pipeline / Delta Live Table / Spark Declarative Pipeline into python code as well. A beloved child has many names
 * Edit the file jobs_as_code_project_pipeline.py
 
 ```python
@@ -219,7 +219,7 @@ Notice that you are using the same catalog, schema, as other users. This is not 
 We will fix this later on in the workshop, if your pipeline fails, it is not an issue.
 
 ## Exercise 6
-In order to save time, we will fast track to a more elegant and efficient solution to working with several bundles, where multiple users can collaborate on bundle deployment.
+In order to save time, we will fast track to a more elegant and efficient solution to working with several bundles, where multiple users can collaborate on code within a single bundle.
 
 Go to the folder [do_not_use_until_exercise_6](do_not_use_until_exercise_6).
 
@@ -241,7 +241,7 @@ Update the [targets.yml file](do_not_use_until_exercise_6/bundles/targets.yml) .
 
 ## Exercise 9
 
-Create a branch. Call it feat/working_with_bundles
+Create a branch. Call it whatever you want, e.g. feat/working_with_bundles
 
 ## Exercise 10
 
@@ -253,6 +253,19 @@ make deploy BUNDLE=bundle1 PROFILE=<your_profile_name>
 ```
 
 If everything was done correctly, you should have a working deploy.
-Run the pipeline in the databricks GUI. Observe the results
+Run the pipeline in the databricks GUI. Note that the name of the pipeline is unique for your user, also note the name of the schema is based on your branch name, which lets you work in isolation, but still access other important data in your workspace.
 
+## Exercise 11
 
+Have a look at [bundle2](do_not_use_until_exercise_6/bundles/bundle2) Compare it to the bundle you made in Exercise 1. 
+What are your thoughts? In my opinion It has less "cruft", less yaml, and our mutators can be reused across bundles, and we only have a single project file, a single .venv, and so on. Working with bundle files, locally, in your own IDE, then deploing it for testing, or using databricks-connect is also a possibility.
+
+## Summary and final thoughts
+
+In this set of exercises we went through setting up a "vanilla" databricks asset bundle, with python support
+We observe how it works, tested it, and then gradually refined the approach.
+
+I hope you found the workshop useful, thanks so much for coming! The team I work for use this approach on a day-to-day basis,
+and it is the best approach we have found for working with Databricks so far.
+
+I plan on doing another workshop where we can use DABS with python as a basis, and then implement a full CI/CD pipeline for Databricks, using Github Actions.
