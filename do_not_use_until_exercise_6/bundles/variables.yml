@@ -1,0 +1,7 @@
+variables:
+  schema_postfix:
+    description: Schema postfix
+    default: ""
+  git_branch:
+    description: Current git git_branch
+    default: ${bundle.git.branch}

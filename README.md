@@ -223,10 +223,31 @@ In order to save time, we will fast track to a more elegant and efficient soluti
 
 Go to the folder [do_not_use_until_exercise_6](do_not_use_until_exercise_6).
 
-We need to get our packages:
+We need to get our packages for everything to work:
 
 ```shell
 uv sync
 ```
+
+## Exercise 7
+
+Observe - what is different with the bundles, compared to the "out of the box experience" you get when running the default databricks bundle ?
+* What is the purpose of the Makefile ? [Makefile](do_not_use_until_exercise_6/Makefile)
+* What is the purpose of the mutators? [Mutators](do_not_use_until_exercise_6/bundles/mutators)
+
+## Exercise 8
+
+Update the [targets.yml file](do_not_use_until_exercise_6/bundles/targets.yml) . Replace my username with yours. Normally we would use service principal accounts for deploys, but it is cumbersome in a workshop setting.
+
+## Exercise 9
+
+Retyping the same commands all the time is tedious, and error-prone. We use Makefile targets to help us.
+Try doing a deploy of bundle1 with make / Makefile
+
+```shell
+make deploy BUNDLE=bundle1 PROFILE=<your_profile_name>
+```
+
+If everything was done correctly, you should have a working deploy.
 
 

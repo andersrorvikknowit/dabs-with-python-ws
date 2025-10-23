@@ -10,6 +10,7 @@ from databricks.bundles.core import (
 class Variables:
     """Variables used in the bundle."""
 
+    notification_email: Variable[str]
     schema: Variable[str]
     git_branch: Variable[str]
 

@@ -4,6 +4,6 @@ bundle:
   name: bundle1
 
 include:
-  - resources/*.yml
-  - ../python_deploy_base.yml
+  - ../variables.yml
   - ../targets.yml
+  - ../python_deploy_base.yml

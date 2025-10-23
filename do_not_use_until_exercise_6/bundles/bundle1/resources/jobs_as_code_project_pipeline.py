@@ -2,8 +2,9 @@ from databricks.bundles.pipelines import NotebookLibrary, Pipeline, PipelineLibr
 
 jobs_as_code_project_pipeline = Pipeline(
     name="jobs_as_code_project_pipeline_new_bundle",
-    target="jobs_as_code_project_${bundle.target}",
+    schema="jobs_as_code_project",
     catalog="knowit_dabs_python_ws",
+    serverless=True,
 
     libraries=[
         PipelineLibrary(

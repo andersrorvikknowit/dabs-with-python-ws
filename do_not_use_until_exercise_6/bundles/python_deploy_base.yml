@@ -5,3 +5,6 @@ experimental:
     venv_path: ../../.venv
     resources:
       - "resources:load_resources"
+    mutators:
+      - 'resources:adjust_job_for_dev'
+      - 'resources:adjust_pipeline_for_dev'

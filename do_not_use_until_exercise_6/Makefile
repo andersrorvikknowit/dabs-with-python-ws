@@ -11,12 +11,12 @@ validate:
 
 deploy: validate
 	@echo "deploying bundle... $$BUNDLE"
-	uv run deploy_helper.py $(BUNDLE) $(DATABRICKS_ENV) $(PROFILE) $(FLAGS)
+	uv run deploy_helper.py $(BUNDLE) $(DATABRICKS_ENV) $(PROFILE)
 
 destroy:
 	@echo "deploying bundle... $$BUNDLE"
-	cd ./bundles/$(BUNDLE) && databricks bundle destroy -t $(DATABRICKS_ENV) -p $(PROFILE) $(FLAGS)
+	cd ./bundles/$(BUNDLE) && databricks bundle destroy -t $(DATABRICKS_ENV) -p $(PROFILE)
 
 run:
 	@echo "Running bundle... $$BUNDLE - $$TARGET with flags: $$FLAGS"
-	cd ./bundles/$(BUNDLE) && databricks bundle run $(TARGET) -t $(DATABRICKS_ENV) -p $(PROFILE) $(FLAGS)
+	cd ./bundles/$(BUNDLE) && databricks bundle run $(TARGET) -t $(DATABRICKS_ENV) -p $(PROFILE)
