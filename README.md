@@ -221,4 +221,12 @@ We will fix this later on in the workshop, if your pipeline fails, it is not an 
 ## Exercise 6
 In order to save time, we will fast track to a more elegant and efficient solution to working with several bundles, where multiple users can collaborate on bundle deployment.
 
+Go to the folder [do_not_use_until_exercise_6](do_not_use_until_exercise_6).
+
+We need to get our packages:
+
+```shell
+uv sync
+```
+
 

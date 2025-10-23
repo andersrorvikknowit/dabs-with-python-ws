@@ -1,7 +1,7 @@
 from databricks.bundles.pipelines import NotebookLibrary, Pipeline, PipelineLibrary
 
 jobs_as_code_project_pipeline = Pipeline(
-    name="jobs_as_code_project_pipeline",
+    name="jobs_as_code_project_pipeline_new_bundle",
     target="jobs_as_code_project_${bundle.target}",
     catalog="knowit_dabs_python_ws",
 

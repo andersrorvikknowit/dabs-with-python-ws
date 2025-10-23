@@ -7,7 +7,7 @@ from databricks.bundles.jobs import (
 )
 
 job = Job(
-    name="jobs_as_code_project_job",
+    name="jobs_as_code_project_job_new_bundle",
     performance_target=PerformanceTarget.PERFORMANCE_OPTIMIZED,
     schedule=CronSchedule(
         quartz_cron_expression="0 0 8 ? * * *",

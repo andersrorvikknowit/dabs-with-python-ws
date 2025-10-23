@@ -7,12 +7,12 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://adb-1428003370553486.6.azuredatabricks.net
+      host: https://dbc-639f4875-165d.cloud.databricks.com
 
   prod:
     mode: production
     workspace:
-      host: https://adb-2213260446811640.0.azuredatabricks.net
+      host: https://dbc-639f4875-165d.cloud.databricks.com
       # We explicitly specify /Workspace/Users/anders.rorvik@knowit.no to make sure we only have a single copy.
       root_path: /Workspace/Users/anders.rorvik@knowit.no/.bundle/${bundle.name}/${bundle.target}
     permissions:
@@ -20,3 +20,4 @@ targets:
         level: CAN_MANAGE
     run_as:
       user_name: anders.rorvik@knowit.no
+
