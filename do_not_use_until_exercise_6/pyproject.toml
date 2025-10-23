@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dabs_python"
+requires-python = ">=3.10"
+description = "A collection of bundles managed with the new python way of doing asset bundles in Databricks"
+
+# Dependencies in case the output wheel file is used as a library dependency.
+# For defining dependencies, when this package is used in Databricks, see:
+# https://docs.databricks.com/dev-tools/bundles/library-dependencies.html
+#
+# Example:
+# dependencies = [
+#     "requests==x.y.z",
+# ]
+dependencies = [
+    "databricks-bundles>=0.268.0",
+]
+
+# see setup.py
+dynamic = ["version"]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.uv]
+## Dependencies for local development
+dev-dependencies = [
+    "databricks-bundles==0.268.0",
+    "databricks-sdk>=0.65.0",
+    "databricks-sdk[notebook]>=0.43.0",
+    "ruff>=0.14.1",
+]
+
+override-dependencies = [
+    # pyspark package conflicts with 'databricks-connect'
+    "pyspark; sys_platform == 'never'",
+]

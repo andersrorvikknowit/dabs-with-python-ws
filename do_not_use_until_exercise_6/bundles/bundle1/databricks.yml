@@ -1,0 +1,9 @@
+# This is a Databricks asset bundle definition for autoloader_test.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: bundle1
+
+include:
+  - resources/*.yml
+  - ../python_deploy_base.yml
+  - ../targets.yml
