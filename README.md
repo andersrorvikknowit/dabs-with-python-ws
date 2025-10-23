@@ -241,8 +241,12 @@ Update the [targets.yml file](do_not_use_until_exercise_6/bundles/targets.yml) .
 
 ## Exercise 9
 
+Create a branch. Call it feat/working_with_bundles
+
+## Exercise 10
+
 Retyping the same commands all the time is tedious, and error-prone. We use Makefile targets to help us.
-Try doing a deploy of bundle1 with make / Makefile
+Try doing a deploy of bundle1 with the following command. make is the program that invokes targets in a Makefile.
 
 ```shell
 make deploy BUNDLE=bundle1 PROFILE=<your_profile_name>
