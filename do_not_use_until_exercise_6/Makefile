@@ -16,7 +16,3 @@ deploy: validate
 destroy:
 	@echo "deploying bundle... $$BUNDLE"
 	cd ./bundles/$(BUNDLE) && databricks bundle destroy -t $(DATABRICKS_ENV) -p $(PROFILE)
-
-run:
-	@echo "Running bundle... $$BUNDLE - $$TARGET with flags: $$FLAGS"
-	cd ./bundles/$(BUNDLE) && databricks bundle run $(TARGET) -t $(DATABRICKS_ENV) -p $(PROFILE)
