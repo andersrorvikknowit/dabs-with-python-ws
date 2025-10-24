@@ -306,9 +306,15 @@ Run the pipeline in the databricks GUI. Note that the name of the pipeline is un
 
 ## Exercise 11
 
-Have a look at [bundle2](do_not_use_until_exercise_6/bundles/bundle2) Compare it to the bundle you made in Exercise 1. 
+Have a look at [bundle1](do_not_use_until_exercise_6/bundles/bundle1) Compare it to the bundle you made in Exercise 1. 
 What are your thoughts? In my opinion It has less "cruft", less yaml, and our mutators can be reused across bundles, and we only have a single project file, a single .venv, and so on. 
 You can work with the bundles locally, in your own IDE or make use of databricks-connect to work with the bundles. Another option is to use a dev container with spark support.
+
+## Exercise 12
+Consider this the final- and a bonus exercise.
+
+In bundle2, you have a job and a pipeline. Change the job so it first runs the notebook (which it does in its present form), and then make it run the pipeline.
+Hint, look at the PipelineTask class.
 
 ## Summary and final thoughts
 
