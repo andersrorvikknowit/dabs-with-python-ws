@@ -4,7 +4,7 @@ This workshop is a walkthrough of how [databricks asset bundles works in python]
 ## Prerequisites
 
 * You need to have databricks-cli installed. It must be version 0.248.0 or above to be able to use python for asset bundles.
-* Make is required. It runs on Linux, MacOS and Windows
+* Make is required. It runs on Linux, macOS and Windows
   * Make is a way to "reuse commands". More about this later in the workshop, but get the tool installed :)
 * You can use whatever editor / IDE you want. I use Pycharm, many people prefer VSCode which is also great.
 * Finally, you will need the [uv package manager](https://github.com/astral-sh/uv) for python.
@@ -130,7 +130,7 @@ job = Job(
     performance_target=PerformanceTarget.PERFORMANCE_OPTIMIZED,
     schedule=CronSchedule(
         quartz_cron_expression="0 0 8 ? * * *",
-        timezone_id="UTC",  # Every day at 8 clock in the morning.
+        timezone_id="UTC",  # Every day at 8 o'clock in the morning.
     ),
     job_clusters=[
         JobCluster(
@@ -173,7 +173,7 @@ job = Job(
     performance_target=PerformanceTarget.PERFORMANCE_OPTIMIZED,
     schedule=CronSchedule(
         quartz_cron_expression="0 0 8 ? * * *",
-        timezone_id="UTC",  # Every day at 8 clock in the morning.
+        timezone_id="UTC",  # Every day at 8 o'clock in the morning.
     ),
     tasks=[
         Task(
@@ -185,7 +185,7 @@ job = Job(
 
 ```
 
-Run the deploy with the databricks CLI
+Run the deployment with the databricks CLI
 
 ```shell
 databricks bundle deploy --target dev -p <your_profile_name>
@@ -246,7 +246,7 @@ Create a branch. Call it whatever you want, e.g. feat/working_with_bundles
 ## Exercise 10
 
 Retyping the same commands all the time is tedious, and error-prone. We use Makefile targets to help us.
-Try doing a deploy of bundle1 with the following command. make is the program that invokes targets in a Makefile.
+Try doing a deployment of bundle1 with the following command. make is the program that invokes targets in a Makefile.
 
 ```shell
 make deploy BUNDLE=bundle1 PROFILE=<your_profile_name>
@@ -258,7 +258,7 @@ Run the pipeline in the databricks GUI. Note that the name of the pipeline is un
 ## Exercise 11
 
 Have a look at [bundle2](do_not_use_until_exercise_6/bundles/bundle2) Compare it to the bundle you made in Exercise 1. 
-What are your thoughts? In my opinion It has less "cruft", less yaml, and our mutators can be reused across bundles, and we only have a single project file, a single .venv, and so on. Working with bundle files, locally, in your own IDE, then deploing it for testing, or using databricks-connect is also a possibility.
+What are your thoughts? In my opinion It has less "cruft", less yaml, and our mutators can be reused across bundles, and we only have a single project file, a single .venv, and so on. Working with bundle files, locally, in your own IDE, then deploying it for testing, or using databricks-connect is also a possibility.
 
 ## Summary and final thoughts
 
@@ -268,4 +268,4 @@ We observe how it works, tested it, and then gradually refined the approach.
 I hope you found the workshop useful, thanks so much for coming! The team I work for use this approach on a day-to-day basis,
 and it is the best approach we have found for working with Databricks so far.
 
-I plan on doing another workshop where we can use DABS with python as a basis, and then implement a full CI/CD pipeline for Databricks, using Github Actions.
+I plan on doing another workshop where we can use DABS with python as a basis, and then implement a full CI/CD pipeline for Databricks, using GitHub Actions.
