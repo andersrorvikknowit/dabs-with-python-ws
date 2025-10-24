@@ -9,18 +9,30 @@ This workshop is a walkthrough of how [databricks asset bundles works in python]
 * You can use whatever editor / IDE you want. I use Pycharm, many people prefer VSCode which is also great.
 * Finally, you will need the [uv package manager](https://github.com/astral-sh/uv) for python.
 
-In case you use brew for macOS:
+### Installation instructions for macOS:
+
+If you have installed macOS 26 you might need to do the below:
+
+```shell
+sudo rm -rf /Library/Developer/CommandLineTools
+sudo xcode-select --install
+```
+
+If you use brew, you can install the dependencies quickly:
 
 ```shell
 brew install databricks/tap/databricks make uv
 ```
 
-For windows, in case you use 
+### Installation instructions for Windows:
+
 ```shell
 choco install databricks-cli make uv
 ```
 
-For Linux, use your distro's package manager.
+### Installation instructions for Linux:
+
+Use your distro's package manager.
 
 
 ## Exercise 1
