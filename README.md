@@ -123,6 +123,15 @@ databricks bundle deploy --target dev -p <your_profile_name>
 
 ## Exercise 4
 Observe where the bundle has been deployed in [your workspace](https://dbc-639f4875-165d.cloud.databricks.com/browse)
+Observe the job and pipeline in [Jobs & Pipelines](https://dbc-639f4875-165d.cloud.databricks.com/jobs) section.
+
+If you want to check the settings, you can open the pipeline, then click on settings on the top right. You can then see default catalog and schema for.
+
+![img.png](img/pipeline_settings.png)
+
+And here is an example of how the settings will look:
+
+![img.png](img/pipeline_settings_2.png)
 
 ## Exercise 5
 
