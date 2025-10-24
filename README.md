@@ -144,6 +144,8 @@ has a job cluster section. Waiting for the job cluster and the job to complete i
 
 Please use the serverless version, unless you need a coffee break :)
 
+### Serverless version of the job
+
 ```python
 from databricks.bundles.jobs import (
     CronSchedule,
@@ -169,6 +171,7 @@ job = Job(
 )
 
 ```
+### Jobcluster version of the job
 
 ```python
 
@@ -219,8 +222,6 @@ job = Job(
 )
 
 ```
-
-
 
 Run the deployment with the databricks CLI
 
