@@ -113,6 +113,11 @@ Find the relevant file, and update the catalog name variable.
 Have a look at the file jobs_as_code_project_pipeline.py
 </details>
 
+Run the deployment again, it should now work.
+
+```shell
+databricks bundle deploy --target dev -p <your_profile_name>
+```
 
 ## Exercise 4
 Observe where the bundle has been deployed in [your workspace](https://dbc-639f4875-165d.cloud.databricks.com/browse)
