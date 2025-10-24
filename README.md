@@ -277,7 +277,7 @@ Observe - what is different with the bundles, compared to the "out of the box ex
 
 ## Exercise 8
 
-Update the [targets.yml file](do_not_use_until_exercise_6/bundles/targets.yml) . Replace my username with yours. Normally we would use service principal accounts for deploys, but it is cumbersome in a workshop setting.
+Update the [targets.yml file](do_not_use_until_exercise_6/bundles/targets.yml) . Replace my email with yours. Normally we would use service principal accounts for deploys, but it is cumbersome in a workshop setting.
 
 ## Exercise 9
 
