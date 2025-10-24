@@ -78,6 +78,7 @@ Bundles are not really useful without a deployment, so let us deploy the bundle.
 
 The bundle requires packages, so we need to install them. Go ahead and do so with uv.
 Ensure that you are in the folder where databricks.yml is located.
+
 ```shell
 uv sync
 ```
