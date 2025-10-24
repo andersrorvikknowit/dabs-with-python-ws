@@ -138,8 +138,37 @@ In case you used the default template:
 
 * Edit the file called jobs_as_code_project_job.py
 
-We will now convert it from JSON to Python. See a sample below. Note that implementations on Azure and GCP will have different attributes.
-Waiting for the job cluster and the job to complete is going to take about 11 minutes. Please use the serverless version below, unless you need a coffee break :)
+We will now convert it from JSON to Python. See a sample below. Note that implementations on Azure and GCP will have different attributes. 
+There are two samples below, the one directly below is the serverless  version, the sample below that again, 
+has a job cluster section. Waiting for the job cluster and the job to complete is going to take about 11 minutes.
+
+Please use the serverless version, unless you need a coffee break :)
+
+```python
+from databricks.bundles.jobs import (
+    CronSchedule,
+    Job,
+    PerformanceTarget,
+    Task,
+    NotebookTask,
+)
+
+job = Job(
+    name="jobs_as_code_project_job",
+    performance_target=PerformanceTarget.PERFORMANCE_OPTIMIZED,
+    schedule=CronSchedule(
+        quartz_cron_expression="0 0 8 ? * * *",
+        timezone_id="UTC",  # Every day at 8 o'clock in the morning.
+    ),
+    tasks=[
+        Task(
+            task_key="notebook_task",
+            notebook_task=NotebookTask(notebook_path="src/notebook.ipynb"),
+        )
+    ],
+)
+
+```
 
 ```python
 
@@ -191,31 +220,7 @@ job = Job(
 
 ```
 
-```python
-from databricks.bundles.jobs import (
-    CronSchedule,
-    Job,
-    PerformanceTarget,
-    Task,
-    NotebookTask,
-)
 
-job = Job(
-    name="jobs_as_code_project_job",
-    performance_target=PerformanceTarget.PERFORMANCE_OPTIMIZED,
-    schedule=CronSchedule(
-        quartz_cron_expression="0 0 8 ? * * *",
-        timezone_id="UTC",  # Every day at 8 o'clock in the morning.
-    ),
-    tasks=[
-        Task(
-            task_key="notebook_task",
-            notebook_task=NotebookTask(notebook_path="src/notebook.ipynb"),
-        )
-    ],
-)
-
-```
 
 Run the deployment with the databricks CLI
 
