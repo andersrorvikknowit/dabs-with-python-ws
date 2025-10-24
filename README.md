@@ -83,6 +83,8 @@ Ensure that you are in the folder where databricks.yml is located.
 uv sync
 ```
 
+You might have to tell your IDE / Editor where the python interpreter is to have working intellisense, and it is in .venv/bin/python.
+
 Then we can deploy the bundle with the databricks-cli
 ```shell
 databricks bundle deploy --target dev -p <your_profile_name>
