@@ -171,7 +171,7 @@ job = Job(
 )
 
 ```
-### Jobcluster version of the job
+### Job cluster version of the job
 
 ```python
 
@@ -239,7 +239,7 @@ from databricks.bundles.pipelines import NotebookLibrary, Pipeline, PipelineLibr
 jobs_as_code_project_pipeline = Pipeline(
     name="jobs_as_code_project_pipeline",
     catalog="knowit_dabs_python_ws",
-    schema="knowit_dabs_python_ws_${bundle.target}",
+    schema="knowit_dabs_python_ws",
     libraries=[
         PipelineLibrary(
             notebook=NotebookLibrary(path="src/dlt_pipeline.ipynb"),
