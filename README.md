@@ -55,7 +55,7 @@ databricks auth login https://dbc-639f4875-165d.cloud.databricks.com/
 Next, we will generate a new asset bundle, but with python rather than yaml.
 
 ```shell
-databricks bundle init experimental-jobs-as-code
+databricks bundle init experimental-jobs-as-code -p <your_profile_name>
 ```
 
 * When prompted, enter the name of the bundle / your project.
