@@ -28,21 +28,32 @@ uv pip install pydevd-pycharm~=<pycharm_version_from_your_run_config>
 Insert the following in the file you want to debug. For mutator/resource debugging, the best place is the bundle's resource entry point (e.g. `resources/__init__.py`):
 
 ```python
+import os
 
-import pydevd_pycharm
-pydevd_pycharm.settrace(
-    'localhost',
-    port=5678,
-    stdout_to_server=False,  # CRITICAL: must be False — stdout is used for CLI ↔ Python JSON IPC
-    stderr_to_server=True,
-    suspend=True,            # Pause execution immediately so you can set breakpoints
-)
+if os.getenv("BUNDLE_DEBUG"):
+    import pydevd_pycharm
+    pydevd_pycharm.settrace(
+        'localhost',
+        port=5678,
+        stdout_to_server=False,
+        stderr_to_server=True,
+        suspend=True,
+    )
+
 
 ```
 
 > ⚠️ **`stdout_to_server` must be `False`.** The Databricks CLI communicates with the Python subprocess over stdout using a JSON protocol. Redirecting stdout to the debug server will break the deploy.
 
 You can also place the hook inside a specific mutator function if you only want to break there.
+
+Here the BUNDLE_DEBUG environment variable is used to conditionally enable the debug hook. This way, you can leave the code in place and only set the variable when you want to debug.
+For example in the makefile:
+```makefile
+debug-validate:
+	@echo "Verifying bundle (DEBUG)... $$BUNDLE"
+	cd ./bundles/$(BUNDLE) && BUNDLE_DEBUG=1 databricks bundle validate -t $(DATABRICKS_ENV) -p $(PROFILE)
+```
 
 ## Step 3: Set Breakpoints
 
