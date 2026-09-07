@@ -1,14 +1,14 @@
-# DABS-with-python - Workshop
+# DABS-with-python * Workshop
 
 This workshop is a walkthrough of how [~~databricks asset~~ declarative automation bundles works in python](https://docs.databricks.com/aws/en/dev-tools/bundles/python/#gsc.tab=0). You will go through a set of exercises.
 
 ## Prerequisites
 
-- You need to have databricks-cli installed. It must be version 0.248.0 or above to be able to use python for asset bundles.
-- Make is required. It runs on Linux, macOS and Windows
-  - Make is a way to "reuse commands". More about this later in the workshop, but get the tool installed :)
-- You can use whatever editor / IDE you want. I use Pycharm, many people prefer VSCode which is also great.
-- Finally, you will need the [uv package manager](https://github.com/astral-sh/uv) for python.
+* You need to have databricks-cli installed. It must be version 0.248.0 or above to be able to use python for asset bundles.
+* Make is required. It runs on Linux, macOS and Windows
+* Make is a way to "reuse commands". More about this later in the workshop, but get the tool installed :)
+* You can use whatever editor / IDE you want. I use Pycharm, many people prefer VSCode which is also great.
+* Finally, you will need the [uv package manager](https://github.com/astral-sh/uv) for python.
 
 ### Installation instructions for macOS
 
@@ -59,13 +59,13 @@ Next, we will generate a new asset bundle, but with python rather than yaml.
 databricks bundle init pydabs -p <your_profile_name>
 ```
 
-- When prompted, enter the name of the bundle / your project.
-- Say YES to "include a stub (sample) notebook"
-- Say YES to "include a stub (sample) ETL pipeline"
-- Say NO to "include a stub (sample) Python package that builds into a wheel file"
-- Say YES to "Use serverless compute"
-- Press ENTER on default catalog (Empty)
-- Say NO to use a personal schema
+* When prompted, enter the name of the bundle / your project.
+* Say YES to "include a stub (sample) notebook"
+* Say YES to "include a stub (sample) ETL pipeline"
+* Say NO to "include a stub (sample) Python package that builds into a wheel file"
+* Say YES to "Use serverless compute"
+* Press ENTER on default catalog (Empty)
+* Say NO to use a personal schema
 
 Navigate to the folder of the bundle you just created.
 
@@ -146,16 +146,16 @@ So now we have used the default bundle setup. I think we can do better, and we n
 
 Here are some things we could do:
 
-- We do not want a .venv / pyproject.toml for each bundle
-- We do not want to repeat targets / environments in each bundle
-- The job and pipeline were created with JSON definitions, but it can actually be done with python instead! See the files called "jobs_as_code_project_job.py" and "jobs_as_code_project_pipeline.py" for examples of json definitions.
-- And we still have YAML? Unfortunately, we cannot get rid of it all, but we can get rid of most of it.
+* We do not want a .venv / pyproject.toml for each bundle
+* We do not want to repeat targets / environments in each bundle
+* The job and pipeline were created with JSON definitions, but it can actually be done with python instead! See the files called "jobs_as_code_project_job.py" and "jobs_as_code_project_pipeline.py" for examples of json definitions.
+* And we still have YAML? Unfortunately, we cannot get rid of it all, but we can get rid of most of it.
 
 So what can we do? We can reuse definitions and share them across bundles, but first we will "pythonify" our deployments.
 
 In case you used the default template:
 
-- Edit the file called jobs_as_code_project_job.py
+* Edit the file called jobs_as_code_project_job.py
 
 We will now convert it from JSON to Python. See a sample below. Note that implementations on Azure and GCP will have different attributes.
 There are two samples below, the one directly below is the serverless version, the sample below that again,
@@ -251,7 +251,7 @@ databricks bundle deploy --target dev -p <your_profile_name>
 
 Time to change the Pipeline / Delta Live Table / Spark Declarative Pipeline into python code as well. A beloved child has many names
 
-- Edit the file jobs_as_code_project_pipeline.py
+* Edit the file jobs_as_code_project_pipeline.py
 
 ```python
 
@@ -291,10 +291,10 @@ uv sync
 
 ## Exercise 7
 
-Observe - what is different with the bundles, compared to the "out of the box experience" you get when running the default databricks bundle ?
+Observe * what is different with the bundles, compared to the "out of the box experience" you get when running the default databricks bundle ?
 
-- What is the purpose of the Makefile ? [Makefile](do_not_use_until_exercise_6/Makefile)
-- What is the purpose of the mutators? [Mutators](do_not_use_until_exercise_6/bundles/mutators)
+* What is the purpose of the Makefile ? [Makefile](do_not_use_until_exercise_6/Makefile)
+* What is the purpose of the mutators? [Mutators](do_not_use_until_exercise_6/bundles/mutators)
 
 ## Exercise 8
 
@@ -324,7 +324,7 @@ You can work with the bundles locally, in your own IDE or make use of databricks
 
 ## Exercise 12
 
-Consider this the final- and a bonus exercise.
+Consider this the final* and a bonus exercise.
 
 In bundle2, you have a job and a pipeline. Change the job so it first runs the notebook (which it does in its present form), and then make it run the pipeline.
 Hint, look at the PipelineTask class.
