@@ -6,7 +6,7 @@ This workshop is a walkthrough of how [~~databricks asset~~ declarative automati
 
 * You need to have databricks-cli installed. It must be version 0.248.0 or above to be able to use python for asset bundles.
 * Make is required. It runs on Linux, macOS and Windows
-* Make is a way to "reuse commands". More about this later in the workshop, but get the tool installed :)
+ * Make is a way to "reuse commands". More about this later in the workshop, but get the tool installed :)
 * You can use whatever editor / IDE you want. I use Pycharm, many people prefer VSCode which is also great.
 * Finally, you will need the [uv package manager](https://github.com/astral-sh/uv) for python.
 
@@ -35,12 +35,12 @@ choco install databricks-cli make uv
 
 Use your distro's package manager.
 
+
 ## Exercise 1
 
 Navigate to the repository folder in your terminal of choice.
 
 Ensure you have a newer version of databricks-cli than 0.248.0 as mentioned above.
-
 ```shell
 databricks --version
 ```
@@ -78,7 +78,6 @@ What do you think is bad?
 What happens if you create another bundle?
 
 ## Exercise 3
-
 Bundles are not really useful without a deployment, so let us deploy the bundle.
 
 The bundle requires packages, so we need to install them. Go ahead and do so with uv.
@@ -91,7 +90,6 @@ uv sync
 You might have to tell your IDE / Editor where the python interpreter is to have working intellisense, and it is in .venv/bin/python.
 
 Then we can deploy the bundle with the databricks-cli
-
 ```shell
 databricks bundle deploy --target dev -p <your_profile_name>
 ```
@@ -128,7 +126,6 @@ databricks bundle deploy --target dev -p <your_profile_name>
 ```
 
 ## Exercise 4
-
 Observe where the bundle has been deployed in [your workspace](https://dbc-639f4875-165d.cloud.databricks.com/browse)
 Observe the job and pipeline in [Jobs & Pipelines](https://dbc-639f4875-165d.cloud.databricks.com/jobs) section.
 
@@ -190,7 +187,6 @@ job = Job(
 )
 
 ```
-
 ### Job cluster version of the job
 
 ```python
@@ -250,7 +246,6 @@ databricks bundle deploy --target dev -p <your_profile_name>
 ```
 
 Time to change the Pipeline / Delta Live Table / Spark Declarative Pipeline into python code as well. A beloved child has many names
-
 * Edit the file jobs_as_code_project_pipeline.py
 
 ```python
@@ -278,7 +273,6 @@ Notice that you are using the same catalog, schema, as other users. This is not 
 We will fix this later on in the workshop, if your pipeline fails, it is not an issue.
 
 ## Exercise 6
-
 In order to save time, we will fast track to a more elegant and efficient solution to working with several bundles, where multiple users can collaborate on code within a single bundle.
 
 Go to the folder [do_not_use_until_exercise_6](do_not_use_until_exercise_6).
@@ -323,7 +317,6 @@ What are your thoughts? In my opinion It has less "cruft", less yaml, and our mu
 You can work with the bundles locally, in your own IDE or make use of databricks-connect to work with the bundles. Another option is to use a dev container with spark support.
 
 ## Exercise 12
-
 Consider this the final* and a bonus exercise.
 
 In bundle2, you have a job and a pipeline. Change the job so it first runs the notebook (which it does in its present form), and then make it run the pipeline.
