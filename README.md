@@ -142,7 +142,6 @@ And here is an example of how the settings will look:
 So now we have used the default bundle setup. I think we can do better, and we need more python too!
 
 Here are some things we could do:
-
 * We do not want a .venv / pyproject.toml for each bundle
 * We do not want to repeat targets / environments in each bundle
 * The job and pipeline were created with JSON definitions, but it can actually be done with python instead! See the files called "jobs_as_code_project_job.py" and "jobs_as_code_project_pipeline.py" for examples of json definitions.
@@ -154,8 +153,8 @@ In case you used the default template:
 
 * Edit the file called jobs_as_code_project_job.py
 
-We will now convert it from JSON to Python. See a sample below. Note that implementations on Azure and GCP will have different attributes.
-There are two samples below, the one directly below is the serverless version, the sample below that again,
+We will now convert it from JSON to Python. See a sample below. Note that implementations on Azure and GCP will have different attributes. 
+There are two samples below, the one directly below is the serverless  version, the sample below that again, 
 has a job cluster section. Waiting for the job cluster and the job to complete is going to take about 11 minutes.
 
 Please use the serverless version, unless you need a coffee break :)
@@ -285,8 +284,7 @@ uv sync
 
 ## Exercise 7
 
-Observe * what is different with the bundles, compared to the "out of the box experience" you get when running the default databricks bundle ?
-
+Observe - what is different with the bundles, compared to the "out of the box experience" you get when running the default databricks bundle ?
 * What is the purpose of the Makefile ? [Makefile](do_not_use_until_exercise_6/Makefile)
 * What is the purpose of the mutators? [Mutators](do_not_use_until_exercise_6/bundles/mutators)
 
@@ -312,12 +310,12 @@ Run the pipeline in the databricks GUI. Note that the name of the pipeline is un
 
 ## Exercise 11
 
-Have a look at [bundle1](do_not_use_until_exercise_6/bundles/bundle1) Compare it to the bundle you made in Exercise 1.
-What are your thoughts? In my opinion It has less "cruft", less yaml, and our mutators can be reused across bundles, and we only have a single project file, a single .venv, and so on.
+Have a look at [bundle1](do_not_use_until_exercise_6/bundles/bundle1) Compare it to the bundle you made in Exercise 1. 
+What are your thoughts? In my opinion It has less "cruft", less yaml, and our mutators can be reused across bundles, and we only have a single project file, a single .venv, and so on. 
 You can work with the bundles locally, in your own IDE or make use of databricks-connect to work with the bundles. Another option is to use a dev container with spark support.
 
 ## Exercise 12
-Consider this the final* and a bonus exercise.
+Consider this the final- and a bonus exercise.
 
 In bundle2, you have a job and a pipeline. Change the job so it first runs the notebook (which it does in its present form), and then make it run the pipeline.
 Hint, look at the PipelineTask class.
