@@ -6,7 +6,7 @@ This workshop is a walkthrough of how [~~databricks asset~~ declarative automati
 
 * You need to have databricks-cli installed. It must be version 0.248.0 or above to be able to use python for asset bundles.
 * Make is required. It runs on Linux, macOS and Windows
- * Make is a way to "reuse commands". More about this later in the workshop, but get the tool installed :)
+  * Make is a way to "reuse commands". More about this later in the workshop, but get the tool installed :)
 * You can use whatever editor / IDE you want. I use Pycharm, many people prefer VSCode which is also great.
 * Finally, you will need the [uv package manager](https://github.com/astral-sh/uv) for python.
 
