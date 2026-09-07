@@ -1,5 +1,6 @@
-# DABS-with-python - Workshop
-This workshop is a walkthrough of how [databricks asset bundles works in python](https://docs.databricks.com/aws/en/dev-tools/bundles/python/#gsc.tab=0). You will go through a set of exercises.
+# DABS-with-python * Workshop
+
+This workshop is a walkthrough of how [~~databricks asset~~ declarative automation bundles works in python](https://docs.databricks.com/aws/en/dev-tools/bundles/python/#gsc.tab=0). You will go through a set of exercises.
 
 ## Prerequisites
 
@@ -55,13 +56,16 @@ databricks auth login https://dbc-639f4875-165d.cloud.databricks.com/
 Next, we will generate a new asset bundle, but with python rather than yaml.
 
 ```shell
-databricks bundle init experimental-jobs-as-code -p <your_profile_name>
+databricks bundle init pydabs -p <your_profile_name>
 ```
 
 * When prompted, enter the name of the bundle / your project.
 * Say YES to "include a stub (sample) notebook"
-* Say YES to "include a stub (sample) Delta Live Tables pipeline"
-* Say NO to "include a stub (sample) Python package"
+* Say YES to "include a stub (sample) ETL pipeline"
+* Say NO to "include a stub (sample) Python package that builds into a wheel file"
+* Say YES to "Use serverless compute"
+* Press ENTER on default catalog (Empty)
+* Say NO to use a personal schema
 
 Navigate to the folder of the bundle you just created.
 
@@ -112,7 +116,7 @@ Find the relevant file, and update the catalog name variable.
 
 <details>
   <summary>Show hint</summary>
-Have a look at the file jobs_as_code_project_pipeline.py
+Have a look at the file ..._etl_pipeline.py in resources/ and databricks.yml
 </details>
 
 Run the deployment again, it should now work.
