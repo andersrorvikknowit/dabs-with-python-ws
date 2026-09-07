@@ -10,7 +10,7 @@ This workshop is a walkthrough of how [~~databricks asset~~ declarative automati
 * You can use whatever editor / IDE you want. I use Pycharm, many people prefer VSCode which is also great.
 * Finally, you will need the [uv package manager](https://github.com/astral-sh/uv) for python.
 
-### Installation instructions for macOS
+### Installation instructions for macOS:
 
 If you have installed macOS 26 you might need to do the below:
 
@@ -25,13 +25,13 @@ If you use brew, you can install the dependencies quickly:
 brew install databricks/tap/databricks make uv
 ```
 
-### Installation instructions for Windows
+### Installation instructions for Windows:
 
 ```shell
 choco install databricks-cli make uv
 ```
 
-### Installation instructions for Linux
+### Installation instructions for Linux:
 
 Use your distro's package manager.
 
